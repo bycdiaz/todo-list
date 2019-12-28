@@ -1,0 +1,20 @@
+.container {
+  display: grid;
+  grid-template-columns: 33.3% 66.7% 66.7%;
+  grid-template-areas: 
+  "header header header"
+  "list details details"
+  ;
+}
+
+.header {
+  grid-area: header;
+}
+
+.project-list {
+  grid-area: list;
+}
+
+.project-details {
+  grid-area: details;
+}
