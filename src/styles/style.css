@@ -3,6 +3,7 @@
   grid-template-columns: 33.3% 66.7% 66.7%;
   grid-template-areas: 
   "header header header"
+  "new-task details details"
   "list details details"
   ;
 }
@@ -11,10 +12,14 @@
   grid-area: header;
 }
 
-.project-list {
+.new-task {
+  grid-area: new-task;
+}
+
+.task-list {
   grid-area: list;
 }
 
-.project-details {
+.task-details {
   grid-area: details;
 }
