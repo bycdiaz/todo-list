@@ -5,9 +5,10 @@ const taskList = () => {
 
   const getTasks = () => tasks;
 
-  const getNewTask = () => {
-    // const newTaskFormContainer = document.querySelector('.task-details');
-    // newTaskFormContainer.innerHTML = '';
+  const toggleFormView = () => {
+    // clears all info except form in right-pane
+    const taskDetails = document.querySelector('.task-details');
+    taskDetails.innerHTML = '';
 
     const form = document.querySelector('.form');
     if (form.style.display === 'block') {
@@ -15,7 +16,13 @@ const taskList = () => {
     } else {
       form.style.display = 'block';
     }
+  };
 
+  const submitNewTask = () => {
+    const submitButton = document.querySelector('#submit-task');
+    submitButton.addEventListener('click', (event) => {
+      console.log(event.target);
+    });
   };
 
   const addTask = (newTask) => {
@@ -41,7 +48,8 @@ const taskList = () => {
 
   return {
     getTasks,
-    getNewTask,
+    toggleFormView,
+    submitNewTask,
     addTask,
     updateListView,
   };
@@ -51,12 +59,13 @@ const myTaskList = taskList();
 
 const renderTaskList = () => {
   const newTask = document.querySelector('.new-task');
-  myTaskList.updateListView();
 
   newTask.addEventListener('click', () => {
-    myTaskList.getNewTask();
+    myTaskList.toggleFormView();
     // myTaskList.updateListView();
   });
+
+  myTaskList.submitNewTask();
 };
 
 export { renderTaskList };
