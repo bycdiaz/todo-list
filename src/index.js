@@ -1,5 +1,5 @@
 import './styles/style.css';
 import './styles/reset.css';
-import { createTaskList } from './taskList.js';
+import { renderTaskList } from './taskList.js';
 
-createTaskList();
+renderTaskList();
