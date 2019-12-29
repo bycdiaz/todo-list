@@ -5,6 +5,19 @@ const taskList = () => {
 
   const getTasks = () => tasks;
 
+  const getNewTask = () => {
+    // const newTaskFormContainer = document.querySelector('.task-details');
+    // newTaskFormContainer.innerHTML = '';
+
+    const form = document.querySelector('.form');
+    if (form.style.display === 'block') {
+      form.style.display = 'none';
+    } else {
+      form.style.display = 'block';
+    }
+
+  };
+
   const addTask = (newTask) => {
     tasks.push(newTask);
   };
@@ -28,6 +41,7 @@ const taskList = () => {
 
   return {
     getTasks,
+    getNewTask,
     addTask,
     updateListView,
   };
@@ -40,8 +54,8 @@ const renderTaskList = () => {
   myTaskList.updateListView();
 
   newTask.addEventListener('click', () => {
-    myTaskList.addTask('test4');
-    myTaskList.updateListView();
+    myTaskList.getNewTask();
+    // myTaskList.updateListView();
   });
 };
 

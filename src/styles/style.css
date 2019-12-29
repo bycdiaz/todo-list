@@ -23,3 +23,7 @@
 .task-details {
   grid-area: details;
 }
+
+.form {
+  display: none;
+}
