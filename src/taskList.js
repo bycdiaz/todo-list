@@ -1,4 +1,7 @@
+import { form } from './form.js'
+
 const taskContainer = document.querySelector('.task-list');
+const myForm = form();
 
 const taskList = () => {
   const tasks = [];
@@ -7,19 +10,6 @@ const taskList = () => {
 
   const addTask = (newTask) => {
     tasks.push(newTask);
-  };
-
-  const toggleFormView = () => {
-    // clears all info except form in right-pane
-    const taskDetails = document.querySelector('.task-details');
-    taskDetails.innerHTML = '';
-
-    const form = document.querySelector('.form');
-    if (form.style.display === 'block') {
-      form.style.display = 'none';
-    } else {
-      form.style.display = 'block';
-    }
   };
 
   const submitNewTask = () => {
@@ -34,6 +24,8 @@ const taskList = () => {
       addTask(newTask);
       updateListView();
       console.log(tasks);
+      taskName.value = '';
+      description.value = '';
     });
   };
 
@@ -57,9 +49,8 @@ const taskList = () => {
 
   return {
     getTasks,
-    toggleFormView,
-    submitNewTask,
     addTask,
+    submitNewTask,
     updateListView,
   };
 };
@@ -70,11 +61,11 @@ const renderTaskList = () => {
   const newTask = document.querySelector('.new-task');
 
   newTask.addEventListener('click', () => {
-    myTaskList.toggleFormView();
+    myForm.toggleFormView();
     myTaskList.updateListView();
   });
 
   myTaskList.submitNewTask();
 };
 
-export { renderTaskList };
+export { taskList, renderTaskList };
