@@ -1,9 +1,13 @@
 const taskContainer = document.querySelector('.task-list');
 
 const taskList = () => {
-  const tasks = ['test1', 'test2', 'test3'];
+  const tasks = [];
 
   const getTasks = () => tasks;
+
+  const addTask = (newTask) => {
+    tasks.push(newTask);
+  };
 
   const toggleFormView = () => {
     // clears all info except form in right-pane
@@ -21,22 +25,27 @@ const taskList = () => {
   const submitNewTask = () => {
     const submitButton = document.querySelector('#submit-task');
     submitButton.addEventListener('click', (event) => {
-      console.log(event.target);
+      event.preventDefault();
+      const newTask = {
+        name: taskName.value,
+        description: description.value,
+      };
+
+      addTask(newTask);
+      updateListView();
+      console.log(tasks);
     });
   };
 
-  const addTask = (newTask) => {
-    tasks.push(newTask);
-  };
-
   const updateListView = () => {
+    taskContainer.innerHTML = '';
     tasks.forEach((task) => {
       const taskDiv = document.createElement('div');
       taskDiv.className = 'task';
       taskContainer.appendChild(taskDiv);
 
       const taskName = document.createElement('p');
-      taskName.innerText = `${task}`;
+      taskName.innerText = `${task.name}`;
       taskDiv.appendChild(taskName);
 
       const taskCheckBox = document.createElement('button');
@@ -62,7 +71,7 @@ const renderTaskList = () => {
 
   newTask.addEventListener('click', () => {
     myTaskList.toggleFormView();
-    // myTaskList.updateListView();
+    myTaskList.updateListView();
   });
 
   myTaskList.submitNewTask();
