@@ -1,7 +1,9 @@
 import { form } from './form.js'
+import { taskDetails } from './taskDetails.js';
 
 const taskContainer = document.querySelector('.task-list');
 const myForm = form();
+const myTaskDetails = taskDetails();
 
 const taskList = () => {
   const tasks = [];
@@ -19,18 +21,19 @@ const taskList = () => {
       const newTask = {
         name: taskName.value,
         description: description.value,
-        priority: priority.value,
       };
 
       addTask(newTask);
       updateListView();
-      console.log(tasks);
       taskName.value = '';
       description.value = '';
+      myTaskDetails.identifyTask();
     });
   };
 
   const updateListView = () => {
+    let taskCount = 0;
+
     taskContainer.innerHTML = '';
     tasks.forEach((task) => {
       const taskDiv = document.createElement('div');
@@ -39,12 +42,14 @@ const taskList = () => {
 
       const taskName = document.createElement('p');
       taskName.innerText = `${task.name}`;
+      taskName.id = `${taskCount}`;
       taskDiv.appendChild(taskName);
 
       const taskCheckBox = document.createElement('button');
       taskCheckBox.type = 'button';
       taskCheckBox.innerText = 'Delete';
       taskDiv.appendChild(taskCheckBox);
+      taskCount += 1;
     });
   };
 

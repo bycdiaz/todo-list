@@ -4,5 +4,4 @@ import { form } from './form.js';
 import { renderTaskList } from './taskList.js';
 
 form();
-
 renderTaskList();
