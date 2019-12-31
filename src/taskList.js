@@ -19,6 +19,7 @@ const taskList = () => {
       const newTask = {
         name: taskName.value,
         description: description.value,
+        priority: priority.value,
       };
 
       addTask(newTask);
