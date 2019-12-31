@@ -22,7 +22,7 @@ const taskList = () => {
         name: taskName.value,
         description: description.value,
       };
-
+      console.log(newTask);
       addTask(newTask);
       updateListView();
       taskName.value = '';
@@ -36,20 +36,24 @@ const taskList = () => {
     let taskCount = 0;
 
     taskContainer.innerHTML = '';
-    tasks.forEach((task) => {
+    tasks.forEach((task, index) => {
       const taskDiv = document.createElement('div');
       taskDiv.className = 'task';
+      taskDiv.id = `${taskCount}`;
       taskContainer.appendChild(taskDiv);
 
       const taskName = document.createElement('p');
       taskName.innerText = `${task.name}`;
-      taskName.id = `${taskCount}`;
       taskDiv.appendChild(taskName);
 
-      const taskCheckBox = document.createElement('button');
-      taskCheckBox.type = 'button';
-      taskCheckBox.innerText = 'Delete';
-      taskDiv.appendChild(taskCheckBox);
+      const taskDelete = document.createElement('button');
+      taskDelete.type = 'button';
+      taskDelete.innerText = 'Delete';
+      taskDelete.addEventListener('click', () => {
+        tasks.splice(index,1);
+        return updateListView();
+      });
+      taskDiv.appendChild(taskDelete);
       taskCount += 1;
     });
   };

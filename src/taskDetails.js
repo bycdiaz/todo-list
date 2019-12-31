@@ -7,7 +7,6 @@ const taskDetails = () => {
     const tasks = document.querySelector('.task-list');
     tasks.addEventListener('click', (event) => {
       console.log(event.target.id);
-      console.log(event.target.innerHTML);
     });
   };
 
