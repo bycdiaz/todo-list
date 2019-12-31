@@ -27,6 +27,7 @@ const taskList = () => {
       updateListView();
       taskName.value = '';
       description.value = '';
+      myForm.toggleFormView();
       myTaskDetails.identifyTask();
     });
   };
