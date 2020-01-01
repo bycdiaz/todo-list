@@ -3,8 +3,7 @@ const form = () => {
 
   const reset = () => {
     const resetButton = document.querySelector('#reset');
-    resetButton.addEventListener('click', (event) => {
-      console.log(event.target);
+    resetButton.addEventListener('click', () => {
       taskName.value = '';
       description.value = '';
     });
