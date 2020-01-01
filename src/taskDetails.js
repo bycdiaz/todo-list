@@ -1,24 +1,26 @@
-import { taskList } from './taskList.js'
+const displayDetails = () => {
 
-const taskDetails = () => {
-  const taskDetailsContainer = document.querySelector('.task-details');
+  const createDetails = (object) => {
+    const taskDetailsContainer = document.querySelector('.task-details');
+    taskDetailsContainer.innerHTML = '';
 
-  const identifyTask = () => {
-    const tasks = document.querySelector('.task-list');
-    tasks.addEventListener('click', (event) => {
-      console.log(event.target.id);
-    });
+    const taskDetail = document.createElement('div');
+    taskDetail.className = 'task-detail';
+    taskDetailsContainer.appendChild(taskDetail);
+
+    const taskName = document.createElement('p');
+    taskName.innerText = `${object.name}`;
+    taskDetail.appendChild(taskName);
+
+    const taskDescription = document.createElement('p');
+    taskDescription.innerText = `${object.description}`;
+    taskDetail.appendChild(taskDescription);
   };
 
-
-  const displayTaskDetails = () => {
-
-  };
 
   return {
-    identifyTask,
-    displayTaskDetails,
+    createDetails,
   };
 };
 
-export { taskDetails };
+export { displayDetails };

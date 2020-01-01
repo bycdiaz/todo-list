@@ -1,9 +1,11 @@
 import { form } from './form.js'
-import { taskDetails } from './taskDetails.js';
+import { displayDetails } from './taskDetails.js'
+
+const myDisplayDetails = displayDetails();
 
 const taskContainer = document.querySelector('.task-list');
 const myForm = form();
-const myTaskDetails = taskDetails();
+
 
 const taskList = () => {
   const tasks = [];
@@ -28,7 +30,6 @@ const taskList = () => {
       taskName.value = '';
       description.value = '';
       myForm.toggleFormView();
-      myTaskDetails.identifyTask();
     });
   };
 
@@ -44,17 +45,24 @@ const taskList = () => {
 
       const taskName = document.createElement('p');
       taskName.innerText = `${task.name}`;
+      taskName.id = `${taskCount}`;
       taskDiv.appendChild(taskName);
 
       const taskDelete = document.createElement('button');
       taskDelete.type = 'button';
       taskDelete.innerText = 'Delete';
       taskDelete.addEventListener('click', () => {
-        tasks.splice(index,1);
+        tasks.splice(index, 1);
         return updateListView();
       });
       taskDiv.appendChild(taskDelete);
       taskCount += 1;
+    });
+  };
+
+  const displayTaskDetails = () => {
+    taskContainer.addEventListener('click', (event) => {
+      myDisplayDetails.createDetails(getTasks()[event.target.id]);
     });
   };
 
@@ -63,6 +71,7 @@ const taskList = () => {
     addTask,
     submitNewTask,
     updateListView,
+    displayTaskDetails,
   };
 };
 
@@ -77,6 +86,7 @@ const renderTaskList = () => {
   });
 
   myTaskList.submitNewTask();
+  myTaskList.displayTaskDetails();
 };
 
 export { taskList, renderTaskList };
