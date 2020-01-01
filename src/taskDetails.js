@@ -1,5 +1,4 @@
 const displayDetails = () => {
-
   const createDetails = (object) => {
     const taskDetailsContainer = document.querySelector('.task-details');
     taskDetailsContainer.innerHTML = '';

@@ -1,8 +1,9 @@
 import { form } from './form.js'
 import { displayDetails } from './taskDetails.js'
 
-const myDisplayDetails = displayDetails();
+const storage = window.localStorage;
 
+const myDisplayDetails = displayDetails();
 const taskContainer = document.querySelector('.task-list');
 const myForm = form();
 
@@ -24,14 +25,34 @@ const taskList = () => {
         name: taskName.value,
         description: description.value,
       };
-      console.log(newTask);
-      addTask(newTask);
+      // console.log(newTask);
+      storage.setItem('newTask', JSON.stringify(newTask));
+      console.log(storage.getItem('newTask'));
+      addTask(storage.getItem('newTask'));
       updateListView();
       taskName.value = '';
       description.value = '';
       myForm.toggleFormView();
     });
   };
+
+  // original
+  // const submitNewTask = () => {
+  //   const submitButton = document.querySelector('#submit-task');
+  //   submitButton.addEventListener('click', (event) => {
+  //     event.preventDefault();
+  //     const newTask = {
+  //       name: taskName.value,
+  //       description: description.value,
+  //     };
+  //     console.log(newTask);
+  //     addTask(newTask);
+  //     updateListView();
+  //     taskName.value = '';
+  //     description.value = '';
+  //     myForm.toggleFormView();
+  //   });
+  // };
 
   const updateListView = () => {
     let taskCount = 0;
@@ -44,7 +65,7 @@ const taskList = () => {
       taskContainer.appendChild(taskDiv);
 
       const taskName = document.createElement('p');
-      taskName.innerText = `${task.name}`;
+      taskName.innerText = JSON.parse(storage.getItem('newTask')).name;
       taskName.id = `${taskCount}`;
       taskDiv.appendChild(taskName);
 
