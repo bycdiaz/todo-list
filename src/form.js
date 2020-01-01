@@ -1,6 +1,15 @@
 const form = () => {
   const formView = document.querySelector('.form');
 
+  const reset = () => {
+    const resetButton = document.querySelector('#reset');
+    resetButton.addEventListener('click', (event) => {
+      console.log(event.target);
+      taskName.value = '';
+      description.value = '';
+    });
+  };
+
   const cancel = () => {
     const cancelButton = document.querySelector('#cancel');
     cancelButton.addEventListener('click', () => {
@@ -26,8 +35,9 @@ const form = () => {
 
 
   return {
-    toggleFormView,
+    reset,
     cancel,
+    toggleFormView,
   };
 };
 

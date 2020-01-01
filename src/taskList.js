@@ -82,6 +82,7 @@ const renderTaskList = () => {
 
   newTask.addEventListener('click', () => {
     myForm.toggleFormView();
+    myForm.reset();
     myTaskList.updateListView();
   });
 
