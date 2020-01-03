@@ -10,9 +10,9 @@ const taskList = () => {
   let tasks = [];
 
   window.onload = function load() {
-    if (taskStorage.getItem(tasks)) {
-      tasks = JSON.parse(window.localStorage.getItem(tasks));
-      // console.log(tasks);
+    if (taskStorage.getItem('tasks')) {
+      tasks = JSON.parse(window.localStorage.getItem('tasks'));
+      updateListView();
     }
   };
 
