@@ -4,15 +4,20 @@ import { displayDetails } from './taskDetails.js'
 const myDisplayDetails = displayDetails();
 const taskContainer = document.querySelector('.task-list');
 const myForm = form();
-
+const taskStorage = window.localStorage;
 
 const taskList = () => {
   const tasks = [];
 
   const getTasks = () => tasks;
 
+  const saveTasks = () => {
+    taskStorage.setItem('tasks', JSON.stringify(tasks));
+  };
+
   const addTask = (newTask) => {
     tasks.push(newTask);
+    saveTasks();
   };
 
   const submitNewTask = () => {
@@ -84,7 +89,7 @@ const renderTaskList = () => {
     myForm.reset();
     myTaskList.updateListView();
   });
-  
+
   myTaskList.submitNewTask();
   myTaskList.displayTaskDetails();
 };
