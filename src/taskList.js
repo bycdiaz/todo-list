@@ -64,6 +64,7 @@ const taskList = () => {
       taskDelete.innerText = 'Delete';
       taskDelete.addEventListener('click', () => {
         tasks.splice(index, 1);
+        saveTasks();
         return updateListView();
       });
       taskDiv.appendChild(taskDelete);
