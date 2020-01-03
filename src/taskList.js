@@ -84,7 +84,7 @@ const renderTaskList = () => {
     myForm.reset();
     myTaskList.updateListView();
   });
-
+  
   myTaskList.submitNewTask();
   myTaskList.displayTaskDetails();
 };
