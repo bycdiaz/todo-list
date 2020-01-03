@@ -7,7 +7,14 @@ const myForm = form();
 const taskStorage = window.localStorage;
 
 const taskList = () => {
-  const tasks = [];
+  let tasks = [];
+
+  window.onload = function load() {
+    if (taskStorage.getItem(tasks)) {
+      tasks = JSON.parse(window.localStorage.getItem(tasks));
+      // console.log(tasks);
+    }
+  };
 
   const getTasks = () => tasks;
 
