@@ -4,6 +4,7 @@
   grid-template-areas: 
   "header header header"
   "new-task details details"
+  "tasks-title details details"
   "list details details"
   ;
 }
@@ -26,4 +27,8 @@
 
 .form {
   display: none;
+}
+
+.class-list-title {
+  grid-area: tasks-title;
 }
