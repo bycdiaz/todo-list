@@ -19,7 +19,7 @@
 .new-task {
   grid-area: new-task;
   width: 50%;
-}
+} 
 
 .task-list {
   grid-area: list;
