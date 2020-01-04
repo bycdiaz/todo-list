@@ -1,5 +1,5 @@
-import { form } from './form.js'
-import { displayDetails } from './taskDetails.js'
+import { form } from './form.js';
+import { displayDetails } from './taskDetails.js';
 
 const myDisplayDetails = displayDetails();
 const taskContainer = document.querySelector('.task-list');
@@ -45,18 +45,16 @@ const taskList = () => {
   };
 
   const updateListView = () => {
-    let taskCount = 0;
-
     taskContainer.innerHTML = '';
     tasks.forEach((task, index) => {
       const taskDiv = document.createElement('div');
       taskDiv.className = 'task';
-      taskDiv.id = `${taskCount}`;
+      taskDiv.id = `${index}`;
       taskContainer.appendChild(taskDiv);
 
       const taskName = document.createElement('p');
       taskName.innerText = task.name;
-      taskName.id = `${taskCount}`;
+      taskName.id = `${index}`;
       taskDiv.appendChild(taskName);
 
       const taskDelete = document.createElement('button');
@@ -68,7 +66,6 @@ const taskList = () => {
         return updateListView();
       });
       taskDiv.appendChild(taskDelete);
-      taskCount += 1;
     });
   };
 
