@@ -8,11 +8,11 @@ const displayDetails = () => {
     taskDetailsContainer.appendChild(taskDetail);
 
     const taskName = document.createElement('p');
-    taskName.innerText = `${object.name}`;
+    taskName.innerText = `Task Name: ${object.name}`;
     taskDetail.appendChild(taskName);
 
     const taskDescription = document.createElement('p');
-    taskDescription.innerText = `${object.description}`;
+    taskDescription.innerText = `Task Description: ${object.description}`;
     taskDetail.appendChild(taskDescription);
   };
 

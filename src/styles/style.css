@@ -3,18 +3,22 @@
   grid-template-columns: 33.3% 33.3% 33.3%;
   grid-template-areas: 
   "header header header"
-  "new-task details details"
+  "new-task . ."
   "tasks-title details details"
   "list details details"
   ;
+  margin-top: 20px;
 }
 
 .header {
   grid-area: header;
+  margin: auto;
+  font-size: xx-large;
 }
 
 .new-task {
   grid-area: new-task;
+  width: 50%;
 }
 
 .task-list {
@@ -23,6 +27,7 @@
 
 .task-details {
   grid-area: details;
+  margin-top: 40px;
 }
 
 .form {
@@ -31,4 +36,15 @@
 
 .class-list-title {
   grid-area: tasks-title;
+  font-size: larger;
+  margin-top: 20px;
+}
+
+.task {
+  border: rgb(0, 0, 0);
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
 }
