@@ -60,7 +60,8 @@ const taskList = () => {
       const taskDelete = document.createElement('button');
       taskDelete.type = 'button';
       taskDelete.innerText = 'Delete';
-      taskDelete.addEventListener('click', () => {
+      taskDelete.addEventListener('click', (event) => {
+        event.stopPropagation();
         tasks.splice(index, 1);
         saveTasks();
         return updateListView();
