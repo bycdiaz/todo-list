@@ -49,12 +49,12 @@ const taskList = () => {
     tasks.forEach((task, index) => {
       const taskDiv = document.createElement('div');
       taskDiv.className = 'task';
-      taskDiv.id = `${index}`;
+      taskDiv.dataset.number = `${index}`;
       taskContainer.appendChild(taskDiv);
 
       const taskName = document.createElement('p');
       taskName.innerText = task.name;
-      taskName.id = `${index}`;
+      taskName.dataset.number = `${index}`;
       taskDiv.appendChild(taskName);
 
       const taskDelete = document.createElement('button');
@@ -72,7 +72,7 @@ const taskList = () => {
 
   const displayTaskDetails = () => {
     taskContainer.addEventListener('click', (event) => {
-      myDisplayDetails.createDetails(getTasks()[event.target.id]);
+      myDisplayDetails.createDetails(getTasks()[event.target.dataset.number]);
     });
   };
 
